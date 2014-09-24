@@ -1,52 +1,30 @@
-#region-guias.container
+.page-header
+  %h1 
+    Guias
+    %small de Remision
 
-  .region
-    .region-title
-      %h1= page_title!('guias')
+= link_to 'Crear Guia', new_guia_path, class: 'btn btn-primary'
+%br
+%br
+.row
+  .col-sm-12
+    .table-responsive.table-bordered.table-condensed.table-hover
+      %table.table
+        %tr.well
+          %th Numero guia
+          %th Fecha emision
+          %th Fecha traslado      
+          %th Acciones
 
-    .region
-      - if current_admin
-        .admin-control
-          = link_to 'Crear Guia', new_guia_path, class: 'btn btn-primary'
-
-      .table-responsive
-        %table.table
+        - @guias.each do |guia|
           %tr
-            %th Numero guia
-            %th Fecha emision
-            %th Fecha traslado
-            %th Partida direccion
-            %th Partida distrito
-            %th Llegada direccion
-            %th Llegada distrito
-            %th Remitente
-            %th Destinatario
-            %th Marca vehiculo
-            %th Placa
-            %th Configuracion vehicular
-            %th Numero certificado inscripcion
-            %th Licencia conducir
-            %th
-            %th
-            %th
+            %td= guia.numero_guia_id
+            %td= guia.fecha_emision
+            %td= guia.fecha_traslado        
+            %td
+              = link_to 'Ver', guia, class: 'btn btn-info'              
+              = link_to 'Editar', edit_guia_path(guia), class: 'btn btn-success'
+              = link_to 'Eliminar', guia, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
 
-          - @guias.each do |guia|
-            %tr
-              %td= guia.numero_guia_id
-              %td= guia.fecha_emision
-              %td= guia.fecha_traslado
-              %td= guia.partida_direccion
-              %td= guia.partida_distrito_id
-              %td= guia.llegada_direccion
-              %td= guia.llegada_distrito_id
-              %td= guia.remitente_id
-              %td= guia.destinatario_id
-              %td= guia.marca_vehiculo
-              %td= guia.placa_id
-              %td= guia.configuracion_vehicular
-              %td= guia.numero_certificado_inscripcion
-              %td= guia.licencia_conducir
-              %td= link_to 'Ver', guia, class: 'btn btn-info'
-              - if current_admin
-                %td= link_to 'Editar', edit_guia_path(guia), class: 'btn btn-success'
-                %td= link_to 'Eliminar', guia, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
+
+

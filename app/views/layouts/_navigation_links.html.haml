@@ -1,0 +1,8 @@
+%li= link_to "Guias", guias_path
+%li= link_to "Facturas", facturas_path
+%li.dropdown
+  = link_to "Opciones <span class='caret'></span>".html_safe, "#", :"data-toggle" => "dropdown"
+  %ul.dropdown-menu{:role => 'menu'}    
+    %li.divider
+    %li= link_to 'Provincias', provincias_path 
+    %li= link_to 'Distritos', distritos_path 

@@ -1,0 +1,66 @@
+= form_for @guia, :html => { class: 'form-horizontal', role: 'form' } do |f|
+  - if @guia.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@guia.errors.count, "error")}"
+      %ul
+        - @guia.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :numero_guia_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :numero_guia_id, class: 'form-control'
+  .form-group
+    = f.label :fecha_emision, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.date_select :fecha_emision, class: 'form-control'
+  .form-group
+    = f.label :fecha_traslado, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.date_select :fecha_traslado, class: 'form-control'
+  .form-group
+    = f.label :partida_direccion, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :partida_direccion, class: 'form-control'
+  .form-group
+    = f.label :partida_distrito_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :partida_distrito_id, class: 'form-control'
+  .form-group
+    = f.label :llegada_direccion, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :llegada_direccion, class: 'form-control'
+  .form-group
+    = f.label :llegada_distrito_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :llegada_distrito_id, class: 'form-control'
+  .form-group
+    = f.label :remitente_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :remitente_id, class: 'form-control'
+  .form-group
+    = f.label :destinatario_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :destinatario_id, class: 'form-control'
+  .form-group
+    = f.label :marca_vehiculo, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :marca_vehiculo, class: 'form-control'
+  .form-group
+    = f.label :placa_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :placa_id, class: 'form-control'
+  .form-group
+    = f.label :configuracion_vehicular, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :configuracion_vehicular, class: 'form-control'
+  .form-group
+    = f.label :numero_certificado_inscripcion, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :numero_certificado_inscripcion, class: 'form-control'
+  .form-group
+    = f.label :licencia_conducir, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :licencia_conducir, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-default'

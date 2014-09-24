@@ -1,0 +1,18 @@
+- page_title!('Editando factura')
+
+#region-facturas.container
+
+  .region
+    .region-title
+      %h1
+        Editando
+        %b
+          factura
+
+  .region
+    = render 'form'
+
+  .region
+    .admin-controls
+      = link_to 'Ver', @factura, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

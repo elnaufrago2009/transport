@@ -1,0 +1,28 @@
+#region-guia_elementos.container
+
+  .region
+    .region-title
+      %h1= page_title!('guia_elementos')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Guia elemento', new_guia_elemento_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Numero guia remitente
+            %th Guia
+            %th
+            %th
+            %th
+
+          - @guia_elementos.each do |guia_elemento|
+            %tr
+              %td= guia_elemento.numero_guia_remitente
+              %td= guia_elemento.guia_id
+              %td= link_to 'Ver', guia_elemento, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_guia_elemento_path(guia_elemento), class: 'btn btn-success'
+                %td= link_to 'Eliminar', guia_elemento, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

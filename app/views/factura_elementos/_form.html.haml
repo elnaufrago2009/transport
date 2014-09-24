@@ -1,0 +1,26 @@
+= form_for @factura_elemento, :html => { class: 'form-horizontal', role: 'form' } do |f|
+  - if @factura_elemento.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@factura_elemento.errors.count, "error")}"
+      %ul
+        - @factura_elemento.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :primera_guia_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :primera_guia_id, class: 'form-control'
+  .form-group
+    = f.label :segunda_guia_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :segunda_guia_id, class: 'form-control'
+  .form-group
+    = f.label :factura_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :factura_id, class: 'form-control'
+  .form-group
+    = f.label :precio, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :precio, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-default'

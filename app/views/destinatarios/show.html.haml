@@ -1,0 +1,21 @@
+#region-destinatarios.container
+  .region
+    .region-title
+      %h1= page_title!('destinatario')
+
+  .region
+    %p
+      %b Nombre razon:
+      = @destinatario.nombre_razon
+    %p
+      %b Ruc:
+      = @destinatario.ruc
+    %p
+      %b Dni:
+      = @destinatario.dni
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_destinatario_path(@destinatario), class: 'btn btn-success'
+    = link_to 'Regresar', destinatarios_path, class: 'btn btn-warning'

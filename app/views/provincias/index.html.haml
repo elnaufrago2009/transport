@@ -1,0 +1,28 @@
+#region-provincias.container
+
+  .region
+    .region-title
+      %h1= page_title!('provincias')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Provincia', new_provincia_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Nombre
+            %th Departamento
+            %th
+            %th
+            %th
+
+          - @provincias.each do |provincia|
+            %tr
+              %td= provincia.nombre
+              %td= provincia.departamento_id
+              %td= link_to 'Ver', provincia, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_provincia_path(provincia), class: 'btn btn-success'
+                %td= link_to 'Eliminar', provincia, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

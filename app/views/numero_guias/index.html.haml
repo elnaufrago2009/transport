@@ -1,0 +1,26 @@
+#region-numero_guias.container
+
+  .region
+    .region-title
+      %h1= page_title!('numero_guias')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Numero guia', new_numero_guia_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Numero
+            %th
+            %th
+            %th
+
+          - @numero_guias.each do |numero_guia|
+            %tr
+              %td= numero_guia.numero
+              %td= link_to 'Ver', numero_guia, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_numero_guia_path(numero_guia), class: 'btn btn-success'
+                %td= link_to 'Eliminar', numero_guia, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

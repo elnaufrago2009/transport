@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_guia_id: 1
+  fecha_emision: 2014-09-23
+  fecha_traslado: 2014-09-23
+  partida_direccion: MyString
+  partida_distrito_id: 1
+  llegada_direccion: MyString
+  llegada_distrito_id: 1
+  remitente_id: 1
+  destinatario_id: 1
+  marca_vehiculo: MyString
+  placa_id: 1
+  configuracion_vehicular: MyString
+  numero_certificado_inscripcion: MyString
+  licencia_conducir: MyString
+
+two:
+  numero_guia_id: 1
+  fecha_emision: 2014-09-23
+  fecha_traslado: 2014-09-23
+  partida_direccion: MyString
+  partida_distrito_id: 1
+  llegada_direccion: MyString
+  llegada_distrito_id: 1
+  remitente_id: 1
+  destinatario_id: 1
+  marca_vehiculo: MyString
+  placa_id: 1
+  configuracion_vehicular: MyString
+  numero_certificado_inscripcion: MyString
+  licencia_conducir: MyString

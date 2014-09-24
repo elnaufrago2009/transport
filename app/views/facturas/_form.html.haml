@@ -1,0 +1,38 @@
+= form_for @factura, :html => { class: 'form-horizontal', role: 'form' } do |f|
+  - if @factura.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@factura.errors.count, "error")}"
+      %ul
+        - @factura.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :numero_factura_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :numero_factura_id, class: 'form-control'
+  .form-group
+    = f.label :remitente_direccione_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :remitente_direccione_id, class: 'form-control'
+  .form-group
+    = f.label :condiciones_pago, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :condiciones_pago, class: 'form-control'
+  .form-group
+    = f.label :valor_venta, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :valor_venta, class: 'form-control'
+  .form-group
+    = f.label :igv, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :igv, class: 'form-control'
+  .form-group
+    = f.label :precio_venta, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :precio_venta, class: 'form-control'
+  .form-group
+    = f.label :placa_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :placa_id, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-default'

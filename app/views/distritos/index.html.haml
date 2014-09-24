@@ -1,0 +1,28 @@
+#region-distritos.container
+
+  .region
+    .region-title
+      %h1= page_title!('distritos')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Distrito', new_distrito_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Nombre
+            %th Provincia
+            %th
+            %th
+            %th
+
+          - @distritos.each do |distrito|
+            %tr
+              %td= distrito.nombre
+              %td= distrito.provincia_id
+              %td= link_to 'Ver', distrito, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_distrito_path(distrito), class: 'btn btn-success'
+                %td= link_to 'Eliminar', distrito, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

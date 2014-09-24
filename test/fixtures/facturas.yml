@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numero_factura_id: 1
+  remitente_direccione_id: 1
+  condiciones_pago: MyString
+  valor_venta: MyString
+  igv: MyString
+  precio_venta: MyString
+  placa_id: 1
+
+two:
+  numero_factura_id: 1
+  remitente_direccione_id: 1
+  condiciones_pago: MyString
+  valor_venta: MyString
+  igv: MyString
+  precio_venta: MyString
+  placa_id: 1

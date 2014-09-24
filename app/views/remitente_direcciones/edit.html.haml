@@ -1,0 +1,18 @@
+- page_title!('Editando remitente_direccione')
+
+#region-remitente_direcciones.container
+
+  .region
+    .region-title
+      %h1
+        Editando
+        %b
+          remitente_direccione
+
+  .region
+    = render 'form'
+
+  .region
+    .admin-controls
+      = link_to 'Ver', @remitente_direccione, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

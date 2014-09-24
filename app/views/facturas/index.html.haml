@@ -1,0 +1,38 @@
+#region-facturas.container
+
+  .region
+    .region-title
+      %h1= page_title!('facturas')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Factura', new_factura_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Numero factura
+            %th Remitente direccione
+            %th Condiciones pago
+            %th Valor venta
+            %th Igv
+            %th Precio venta
+            %th Placa
+            %th
+            %th
+            %th
+
+          - @facturas.each do |factura|
+            %tr
+              %td= factura.numero_factura_id
+              %td= factura.remitente_direccione_id
+              %td= factura.condiciones_pago
+              %td= factura.valor_venta
+              %td= factura.igv
+              %td= factura.precio_venta
+              %td= factura.placa_id
+              %td= link_to 'Ver', factura, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_factura_path(factura), class: 'btn btn-success'
+                %td= link_to 'Eliminar', factura, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

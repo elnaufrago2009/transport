@@ -1,0 +1,18 @@
+= form_for @guia_elemento, :html => { class: 'form-horizontal', role: 'form' } do |f|
+  - if @guia_elemento.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@guia_elemento.errors.count, "error")}"
+      %ul
+        - @guia_elemento.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :numero_guia_remitente, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :numero_guia_remitente, class: 'form-control'
+  .form-group
+    = f.label :guia_id, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.number_field :guia_id, class: 'form-control'
+  .actions
+    = f.submit 'Guardar', class: 'btn btn-default'

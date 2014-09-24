@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primera_guia_id: 1
+  segunda_guia_id: 1
+  factura_id: 1
+  precio: MyString
+
+two:
+  primera_guia_id: 1
+  segunda_guia_id: 1
+  factura_id: 1
+  precio: MyString

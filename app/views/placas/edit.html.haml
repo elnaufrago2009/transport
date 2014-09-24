@@ -1,0 +1,18 @@
+- page_title!('Editando placa')
+
+#region-placas.container
+
+  .region
+    .region-title
+      %h1
+        Editando
+        %b
+          placa
+
+  .region
+    = render 'form'
+
+  .region
+    .admin-controls
+      = link_to 'Ver', @placa, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

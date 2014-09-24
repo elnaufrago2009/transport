@@ -1,0 +1,26 @@
+#region-numero_facturas.container
+
+  .region
+    .region-title
+      %h1= page_title!('numero_facturas')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Numero factura', new_numero_factura_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Numero
+            %th
+            %th
+            %th
+
+          - @numero_facturas.each do |numero_factura|
+            %tr
+              %td= numero_factura.numero
+              %td= link_to 'Ver', numero_factura, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_numero_factura_path(numero_factura), class: 'btn btn-success'
+                %td= link_to 'Eliminar', numero_factura, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

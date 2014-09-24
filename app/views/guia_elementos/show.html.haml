@@ -1,0 +1,18 @@
+#region-guia_elementos.container
+  .region
+    .region-title
+      %h1= page_title!('guia_elemento')
+
+  .region
+    %p
+      %b Numero guia remitente:
+      = @guia_elemento.numero_guia_remitente
+    %p
+      %b Guia:
+      = @guia_elemento.guia_id
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_guia_elemento_path(@guia_elemento), class: 'btn btn-success'
+    = link_to 'Regresar', guia_elementos_path, class: 'btn btn-warning'

@@ -1,0 +1,32 @@
+#region-factura_elementos.container
+
+  .region
+    .region-title
+      %h1= page_title!('factura_elementos')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Factura elemento', new_factura_elemento_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Primera guia
+            %th Segunda guia
+            %th Factura
+            %th Precio
+            %th
+            %th
+            %th
+
+          - @factura_elementos.each do |factura_elemento|
+            %tr
+              %td= factura_elemento.primera_guia_id
+              %td= factura_elemento.segunda_guia_id
+              %td= factura_elemento.factura_id
+              %td= factura_elemento.precio
+              %td= link_to 'Ver', factura_elemento, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_factura_elemento_path(factura_elemento), class: 'btn btn-success'
+                %td= link_to 'Eliminar', factura_elemento, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

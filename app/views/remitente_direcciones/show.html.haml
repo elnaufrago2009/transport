@@ -1,0 +1,18 @@
+#region-remitente_direcciones.container
+  .region
+    .region-title
+      %h1= page_title!('remitente_direccione')
+
+  .region
+    %p
+      %b Direccion:
+      = @remitente_direccione.direccion
+    %p
+      %b Remitente:
+      = @remitente_direccione.remitente_id
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_remitente_direccione_path(@remitente_direccione), class: 'btn btn-success'
+    = link_to 'Regresar', remitente_direcciones_path, class: 'btn btn-warning'

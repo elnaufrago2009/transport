@@ -1,0 +1,33 @@
+#region-facturas.container
+  .region
+    .region-title
+      %h1= page_title!('factura')
+
+  .region
+    %p
+      %b Numero factura:
+      = @factura.numero_factura_id
+    %p
+      %b Remitente direccione:
+      = @factura.remitente_direccione_id
+    %p
+      %b Condiciones pago:
+      = @factura.condiciones_pago
+    %p
+      %b Valor venta:
+      = @factura.valor_venta
+    %p
+      %b Igv:
+      = @factura.igv
+    %p
+      %b Precio venta:
+      = @factura.precio_venta
+    %p
+      %b Placa:
+      = @factura.placa_id
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_factura_path(@factura), class: 'btn btn-success'
+    = link_to 'Regresar', facturas_path, class: 'btn btn-warning'

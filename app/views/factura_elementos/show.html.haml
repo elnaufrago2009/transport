@@ -1,0 +1,24 @@
+#region-factura_elementos.container
+  .region
+    .region-title
+      %h1= page_title!('factura_elemento')
+
+  .region
+    %p
+      %b Primera guia:
+      = @factura_elemento.primera_guia_id
+    %p
+      %b Segunda guia:
+      = @factura_elemento.segunda_guia_id
+    %p
+      %b Factura:
+      = @factura_elemento.factura_id
+    %p
+      %b Precio:
+      = @factura_elemento.precio
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_factura_elemento_path(@factura_elemento), class: 'btn btn-success'
+    = link_to 'Regresar', factura_elementos_path, class: 'btn btn-warning'

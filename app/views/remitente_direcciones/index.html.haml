@@ -1,0 +1,28 @@
+#region-remitente_direcciones.container
+
+  .region
+    .region-title
+      %h1= page_title!('remitente_direcciones')
+
+    .region
+      - if current_admin
+        .admin-control
+          = link_to 'Crear Remitente direccione', new_remitente_direccione_path, class: 'btn btn-primary'
+
+      .table-responsive
+        %table.table
+          %tr
+            %th Direccion
+            %th Remitente
+            %th
+            %th
+            %th
+
+          - @remitente_direcciones.each do |remitente_direccione|
+            %tr
+              %td= remitente_direccione.direccion
+              %td= remitente_direccione.remitente_id
+              %td= link_to 'Ver', remitente_direccione, class: 'btn btn-info'
+              - if current_admin
+                %td= link_to 'Editar', edit_remitente_direccione_path(remitente_direccione), class: 'btn btn-success'
+                %td= link_to 'Eliminar', remitente_direccione, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

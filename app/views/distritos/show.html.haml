@@ -1,0 +1,18 @@
+#region-distritos.container
+  .region
+    .region-title
+      %h1= page_title!('distrito')
+
+  .region
+    %p
+      %b Nombre:
+      = @distrito.nombre
+    %p
+      %b Provincia:
+      = @distrito.provincia_id
+
+  .region
+    - if current_admin
+      .admin-controls
+        = link_to 'Editar', edit_distrito_path(@distrito), class: 'btn btn-success'
+    = link_to 'Regresar', distritos_path, class: 'btn btn-warning'

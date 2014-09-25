@@ -6,61 +6,80 @@
         - @guia.errors.full_messages.each do |msg|
           %li= msg
 
-  .form-group
-    = f.label :numero_guia_id, class: 'col-sm-2 control-label'
+  .row
+    .col-sm-6
+      %h5
+        Datos 
+        %small Generales    
+    .col-sm-6
+      %h5 
+        Direccion
+        %small de Llegada
+    .col-sm-2
+      .input-group
+        .input-group-addon.success.text-right
+          %b 506
+        - number = NumeroGuia.last.numero.to_i + 1
+        = f.text_field :numero_guia_id, class: 'form-control', value: "#{number.to_s.rjust(6, '0')}"
+        
+    .col-sm-2
+      = f.text_field :fecha_emision, class: 'form-control', value: "#{Time.now.strftime("%Y-%m-%d")}"
+    .col-sm-2
+      = f.text_field :fecha_traslado, class: 'form-control', value: "#{Time.now.strftime("%Y-%m-%d")}"
+    .col-sm-3
+      = f.text_field :llegada_direccion, class: 'form-control', placeholder: 'Av. Industrial #260'
+    .col-sm-3
+      = f.select :llegada_distrito_id, Distrito.all.collect{|x| ["#{x.nombre} - #{x.provincia.nombre} - #{x.provincia.departamento.nombre}",x.id]}, {:include_blank => 'Distrito - Provincia - Departamento'}, class: 'form-control'
+    // titulos      
+    .col-sm-6
+      %h5 
+        Direccion
+        %small de Partida
+    .col-sm-6
+      %h5 
+        Remitente
+        %small  y Destinatario
+    // formularios
+    .col-sm-3
+      = f.text_field :partida_direccion, class: 'form-control', placeholder: 'Av. Mariano Leno Orquieta Nº 1003'
+    .col-sm-3      
+      = f.select :partida_distrito_id, Distrito.all.collect{|x| ["#{x.nombre} - #{x.provincia.nombre} - #{x.provincia.departamento.nombre}",x.id]}, {:include_blank => 'Distrito - Provincia - Departamento'}, class: 'form-control'
+    .col-sm-3
+      = f.select :remitente_id, Remitente.all.collect{|x| ["#{x.ruc} #{x.nombre_razon} #{x.dni}", x.id]}, {:include_blank => 'Ruc - Razon/Nombre'}, class: 'form-control'
+    .col-sm-3
+      = f.select :destinatario_id, Destinatario.all.collect{|x| ["#{x.ruc} #{x.nombre_razon} #{x.dni}", x.id]}, {:include_blank => 'Ruc - Razon/Nombre'}, class: 'form-control'
+
+    // segunda parte
+
+    //titulos
+    .col-sm-2
+      %h5
+        Rimitente
+        %small Guia
     .col-sm-10
-      = f.number_field :numero_guia_id, class: 'form-control'
-  .form-group
-    = f.label :fecha_emision, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.date_select :fecha_emision, class: 'form-control'
-  .form-group
-    = f.label :fecha_traslado, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.date_select :fecha_traslado, class: 'form-control'
-  .form-group
-    = f.label :partida_direccion, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :partida_direccion, class: 'form-control'
-  .form-group
-    = f.label :partida_distrito_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :partida_distrito_id, class: 'form-control'
-  .form-group
-    = f.label :llegada_direccion, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :llegada_direccion, class: 'form-control'
-  .form-group
-    = f.label :llegada_distrito_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :llegada_distrito_id, class: 'form-control'
-  .form-group
-    = f.label :remitente_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :remitente_id, class: 'form-control'
-  .form-group
-    = f.label :destinatario_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :destinatario_id, class: 'form-control'
-  .form-group
-    = f.label :marca_vehiculo, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :marca_vehiculo, class: 'form-control'
-  .form-group
-    = f.label :placa_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :placa_id, class: 'form-control'
-  .form-group
-    = f.label :configuracion_vehicular, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :configuracion_vehicular, class: 'form-control'
-  .form-group
-    = f.label :numero_certificado_inscripcion, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :numero_certificado_inscripcion, class: 'form-control'
-  .form-group
-    = f.label :licencia_conducir, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :licencia_conducir, class: 'form-control'
+      %h5
+        Datos Unidad Transporte
+        %small y Conductor
+    //formularios
+    .col-sm-2
+      = f.text_field :remitente_remision, class: 'form-control', placeholder: '001 - Nº 004465'
+    .col-sm-2
+      = f.select :marca_vehiculo, [['Internacional', 1]], {:include_blank => 'Marca Vehiculo'}, { :class => 'form-control'}
+    .col-sm-2
+      = f.select :placa_id, Placa.all.collect{|x| [x.nombre,x.id]}, {:include_blank => 'Placa'}, class: 'form-control'
+    .col-sm-2
+      = f.text_field :configuracion_vehicular, class: 'form-control', placeholder: '151305638'
+    .col-sm-2
+      = f.text_field :numero_certificado_inscripcion, class: 'form-control', placeholder: '123456'
+    .col-sm-2
+      = f.text_field :licencia_conducir, class: 'form-control', placeholder: 'K-00448232'
+
+
+  %br
+  %br
+
+
+
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'
+    = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

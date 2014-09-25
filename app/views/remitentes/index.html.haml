@@ -1,30 +1,27 @@
-#region-remitentes.container
+.page-header
+  %h1 
+    Principal
+    %b Remitentes
 
-  .region
-    .region-title
-      %h1= page_title!('remitentes')
+= link_to 'Crear Remitente', new_remitente_path, class: 'btn btn-primary'
+%br
+%br
+.table-responsive
+  %table.table
+    %tr
+      %th Nombre razon
+      %th Ruc
+      %th Dni
+      %th Acciones
+      
+      
 
-    .region
-      - if current_admin
-        .admin-control
-          = link_to 'Crear Remitente', new_remitente_path, class: 'btn btn-primary'
-
-      .table-responsive
-        %table.table
-          %tr
-            %th Nombre razon
-            %th Ruc
-            %th Dni
-            %th
-            %th
-            %th
-
-          - @remitentes.each do |remitente|
-            %tr
-              %td= remitente.nombre_razon
-              %td= remitente.ruc
-              %td= remitente.dni
-              %td= link_to 'Ver', remitente, class: 'btn btn-info'
-              - if current_admin
-                %td= link_to 'Editar', edit_remitente_path(remitente), class: 'btn btn-success'
-                %td= link_to 'Eliminar', remitente, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
+    - @remitentes.each do |remitente|
+      %tr
+        %td= remitente.nombre_razon
+        %td= remitente.ruc
+        %td= remitente.dni
+        %td
+          = link_to 'Ver', remitente, class: 'btn btn-info'      
+          = link_to 'Editar', edit_remitente_path(remitente), class: 'btn btn-success'
+          = link_to 'Eliminar', remitente, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

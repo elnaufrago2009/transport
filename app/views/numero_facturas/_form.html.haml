@@ -8,7 +8,10 @@
 
   .form-group
     = f.label :numero, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-2
       = f.text_field :numero, class: 'form-control'
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'
+    - if params[:action] == 'edit'
+      = link_to 'Ver', @numero_factura, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

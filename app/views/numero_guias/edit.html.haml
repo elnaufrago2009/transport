@@ -1,18 +1,9 @@
-- page_title!('Editando numero_guia')
+.page-header
+  %h1
+    Editar
+    %b
+      Numero Guia
 
-#region-numero_guias.container
+= render 'form'
 
-  .region
-    .region-title
-      %h1
-        Editando
-        %b
-          numero_guia
-
-  .region
-    = render 'form'
-
-  .region
-    .admin-controls
-      = link_to 'Ver', @numero_guia, class: 'btn btn-info'
-      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'
+      

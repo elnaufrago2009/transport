@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140924005303) do
     t.string   "configuracion_vehicular"
     t.string   "numero_certificado_inscripcion"
     t.string   "licencia_conducir"
+    t.string   "remitente_remision"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

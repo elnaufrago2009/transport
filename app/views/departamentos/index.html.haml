@@ -5,9 +5,8 @@
       %h1= page_title!('departamentos')
 
     .region
-      - if current_admin
-        .admin-control
-          = link_to 'Crear Departamento', new_departamento_path, class: 'btn btn-primary'
+      .admin-control
+        = link_to 'Crear Departamento', new_departamento_path, class: 'btn btn-primary'
 
       .table-responsive
         %table.table
@@ -21,6 +20,5 @@
             %tr
               %td= departamento.nombre
               %td= link_to 'Ver', departamento, class: 'btn btn-info'
-              - if current_admin
-                %td= link_to 'Editar', edit_departamento_path(departamento), class: 'btn btn-success'
-                %td= link_to 'Eliminar', departamento, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
+              %td= link_to 'Editar', edit_departamento_path(departamento), class: 'btn btn-success'
+              %td= link_to 'Eliminar', departamento, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

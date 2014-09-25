@@ -8,15 +8,26 @@
 
   .form-group
     = f.label :nombre_razon, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-3
       = f.text_field :nombre_razon, class: 'form-control'
   .form-group
     = f.label :ruc, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-3
       = f.text_field :ruc, class: 'form-control'
   .form-group
     = f.label :dni, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-2
       = f.text_field :dni, class: 'form-control'
+
+  %h3 Direcciones  
+  %br
+  = f.fields_for :remitente_direcciones do |remitente_direccione|
+    = render 'remitente_direccione_fields', :f => remitente_direccione  
+  #distritos
+    = link_to_add_association 'add Direccion', f, :remitente_direcciones, class: 'btn btn-default'
+  %br
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'
+    - if params[:action] == 'edit'
+      = link_to 'Ver', @remitente, class: 'btn btn-info'
+    = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

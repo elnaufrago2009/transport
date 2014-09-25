@@ -7,12 +7,24 @@
           %li= msg
 
   .form-group
-    = f.label :nombre, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :nombre, class: 'form-control'
-  .form-group
     = f.label :departamento_id, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :departamento_id, class: 'form-control'
-  .actions
-    = f.submit 'Guardar', class: 'btn btn-default'
+    .col-sm-3
+      = f.select :departamento_id, Departamento.all.collect{|x| [x.nombre, x.id]},class: 'form-control'
+  .form-group
+    = f.label :provincia, class: 'col-sm-2 control-label'
+    .col-sm-2
+      = f.text_field :nombre, class: 'form-control'
+
+
+
+  %h3 Distritos
+  /%hr{:style => 'border-color: #ccc;'}
+  %br
+  = f.fields_for :distritos do |distrito|
+    = render 'distrito_fields', :f => distrito  
+  #distritos
+    = link_to_add_association 'add distrito', f, :distritos, class: 'btn btn-default'
+  %br
+  .form-group    
+    = f.submit 'Guardar', class: 'btn btn-primary'
+    = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

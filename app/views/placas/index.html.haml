@@ -1,26 +1,20 @@
-#region-placas.container
+.page-header
+  %h1
+    Principal
+    %b Placas
+= link_to 'Crear Placa', new_placa_path, class: 'btn btn-primary'
+%br
+%br
+.table-responsive
+  %table.table
+    %tr
+      %th Nombre
+      %th Acciones     
 
-  .region
-    .region-title
-      %h1= page_title!('placas')
-
-    .region
-      - if current_admin
-        .admin-control
-          = link_to 'Crear Placa', new_placa_path, class: 'btn btn-primary'
-
-      .table-responsive
-        %table.table
-          %tr
-            %th Nombre
-            %th
-            %th
-            %th
-
-          - @placas.each do |placa|
-            %tr
-              %td= placa.nombre
-              %td= link_to 'Ver', placa, class: 'btn btn-info'
-              - if current_admin
-                %td= link_to 'Editar', edit_placa_path(placa), class: 'btn btn-success'
-                %td= link_to 'Eliminar', placa, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
+    - @placas.each do |placa|
+      %tr
+        %td= placa.nombre
+        %td
+          = link_to 'Ver', placa, class: 'btn btn-info'        
+          = link_to 'Editar', edit_placa_path(placa), class: 'btn btn-success'
+          = link_to 'Eliminar', placa, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'

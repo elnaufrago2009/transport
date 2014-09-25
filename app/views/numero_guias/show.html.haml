@@ -1,15 +1,12 @@
-#region-numero_guias.container
-  .region
-    .region-title
-      %h1= page_title!('numero_guia')
+.page-header
+  %h1 
+    Ver
+    %b Numero de Guia
 
-  .region
-    %p
-      %b Numero:
-      = @numero_guia.numero
+%p
+  %b Numero:
+  = @numero_guia.numero
 
-  .region
-    - if current_admin
-      .admin-controls
-        = link_to 'Editar', edit_numero_guia_path(@numero_guia), class: 'btn btn-success'
-    = link_to 'Regresar', numero_guias_path, class: 'btn btn-warning'
+.admin-controls
+  = link_to 'Editar', edit_numero_guia_path(@numero_guia), class: 'btn btn-success'
+  = link_to 'Regresar', numero_guias_path, class: 'btn btn-warning'

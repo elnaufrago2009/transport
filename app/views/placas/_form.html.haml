@@ -8,7 +8,12 @@
 
   .form-group
     = f.label :nombre, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-3
       = f.text_field :nombre, class: 'form-control'
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'
+    - if params[:action] == 'new'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'
+    - if params[:action] == 'edit'
+      = link_to 'Ver', @placa, class: 'btn btn-info'
+      = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

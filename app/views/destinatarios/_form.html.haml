@@ -8,15 +8,18 @@
 
   .form-group
     = f.label :nombre_razon, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-3
       = f.text_field :nombre_razon, class: 'form-control'
   .form-group
     = f.label :ruc, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-3
       = f.text_field :ruc, class: 'form-control'
   .form-group
     = f.label :dni, class: 'col-sm-2 control-label'
-    .col-sm-10
+    .col-sm-2
       = f.text_field :dni, class: 'form-control'
   .actions
     = f.submit 'Guardar', class: 'btn btn-default'
+    - if params[:action] == 'edit'
+      = link_to 'Ver', @destinatario, class: 'btn btn-info'
+    = link_to 'Regresar', 'javascript:history.back(-1)', class: 'btn btn-warning'

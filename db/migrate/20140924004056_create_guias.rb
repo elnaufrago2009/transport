@@ -15,6 +15,7 @@ class CreateGuias < ActiveRecord::Migration
       t.string :configuracion_vehicular
       t.string :numero_certificado_inscripcion
       t.string :licencia_conducir
+      t.string :remitente_remision
 
       t.timestamps
     end

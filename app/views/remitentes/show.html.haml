@@ -1,21 +1,21 @@
-#region-remitentes.container
-  .region
-    .region-title
-      %h1= page_title!('remitente')
+.page-header
+  %h1 Remitente
 
-  .region
-    %p
-      %b Nombre razon:
-      = @remitente.nombre_razon
-    %p
-      %b Ruc:
-      = @remitente.ruc
-    %p
-      %b Dni:
-      = @remitente.dni
+%p
+  %b Nombre razon:
+  = @remitente.nombre_razon
+%p
+  %b Ruc:
+  = @remitente.ruc
+%p
+  %b Dni:
+  = @remitente.dni
 
-  .region
-    - if current_admin
-      .admin-controls
-        = link_to 'Editar', edit_remitente_path(@remitente), class: 'btn btn-success'
-    = link_to 'Regresar', remitentes_path, class: 'btn btn-warning'
+%h3 Direcciones
+
+- @remitente.remitente_direcciones.each do |remitente_direccione|
+  = remitente_direccione.direccion
+  %br
+%br
+= link_to 'Editar', edit_remitente_path(@remitente), class: 'btn btn-success'
+= link_to 'Regresar', remitentes_path, class: 'btn btn-warning'

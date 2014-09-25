@@ -1,0 +1,5 @@
+.form-group.nested-fields
+  .col-sm-4
+    = f.text_field :nombre, class: 'form-control'
+  .col-sm-2
+    = link_to_remove_association "Borrar", f, class: 'btn btn-default'

@@ -1,30 +1,27 @@
-#region-destinatarios.container
+.page-header
+  %h1 
+    Principal
+    %b Destinatarios
+= link_to 'Crear Destinatario', new_destinatario_path, class: 'btn btn-primary'
+          
+%br
+%br
+.table-responsive
+  %table.table
+    %tr
+      %th Nombre razon
+      %th Ruc
+      %th Dni
+      %th Acciones
+      
+      
 
-  .region
-    .region-title
-      %h1= page_title!('destinatarios')
-
-    .region
-      - if current_admin
-        .admin-control
-          = link_to 'Crear Destinatario', new_destinatario_path, class: 'btn btn-primary'
-
-      .table-responsive
-        %table.table
-          %tr
-            %th Nombre razon
-            %th Ruc
-            %th Dni
-            %th
-            %th
-            %th
-
-          - @destinatarios.each do |destinatario|
-            %tr
-              %td= destinatario.nombre_razon
-              %td= destinatario.ruc
-              %td= destinatario.dni
-              %td= link_to 'Ver', destinatario, class: 'btn btn-info'
-              - if current_admin
-                %td= link_to 'Editar', edit_destinatario_path(destinatario), class: 'btn btn-success'
-                %td= link_to 'Eliminar', destinatario, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
+    - @destinatarios.each do |destinatario|
+      %tr
+        %td= destinatario.nombre_razon
+        %td= destinatario.ruc
+        %td= destinatario.dni
+        %td
+          = link_to 'Ver', destinatario, class: 'btn btn-info'              
+          = link_to 'Editar', edit_destinatario_path(destinatario), class: 'btn btn-success'
+          = link_to 'Eliminar', destinatario, :method => :delete, :data => { :confirm => '¿Estás Seguro?' }, class: 'btn btn-danger'
